@@ -1,2 +1,2 @@
 # firebase-rover
-An experiment using Google Firebase Realtime Database to control a rover remotely
+An experiment using Google Firebase Realtime Database to drive a Raspberry Pi rover remotely
