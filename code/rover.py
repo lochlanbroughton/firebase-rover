@@ -12,8 +12,8 @@ joy = xbox.Joystick()
 class msgOut:
     def __init__(self,message):
         self.msg = {
-            "type": "session_log",
-            "session_log": {
+            "type": "session_logs",
+            "session_logs": {
                 "body": message,
                 "created_at": time.time()
             }

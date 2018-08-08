@@ -18,11 +18,14 @@ firebase.initializeApp(firebaseConfig);
 
 // Establish database and assign vehicles and sessions
 const database        = firebase.database(),
-      roverKey        = 'mk1',
+      vehicleKey      = 'mk1',
       sessionKey      = database.ref('sessions').push().key;
+      userKey         = false
 
-database.ref('sessions/' + sessionKey + '/vehicles').set({[roverKey]: true});
-database.ref('vehicles/' + roverKey + '/sessions').set({[sessionKey]: true});
+database.ref('sessions/' + sessionKey + '/vehicles').set({[vehicleKey]: true});
+database.ref('sessions/' + sessionKey + '/users').set({[userKey]: true});
+database.ref('vehicles/' + vehicleKey + '/sessions').set({[sessionKey]: true});
+database.ref('users/' + userKey + '/sessions').set({[sessionKey]: true});
 
 
 // ----------------------------------------
@@ -36,19 +39,15 @@ var rover = new PythonShell('rover.py', {
 // Establish listeners
 rover.on('message', function(data) { // Message received (in JSON format)
 
-    var msg   = data.msg;
+    var dataType = data.type;
 
-    if (msg != undefined) {
-
-      if (msg.type == 'message') {
-        console.log(msg.body);
-        database.ref('sessions/' + sessionKey + '/msg').push(msg);
-      } else if (msg.type == 'status') {
-        database.ref('vehicles/' + roverKey + '/status').set(msg);
-      }
-
-    } else {
-      console.log('No message body found');
+    switch (data_type) {
+      case 'session_logs':
+        database.ref(dataType + '/' + sessionKey).push(data[dataType]);
+        break;
+      case 'vehicle_output':
+        database.ref(dataType + '/' + vehicleKey).push(data[dataType]);
+        break;
     }
 
 }).on('close', function (result) { // Script ends
