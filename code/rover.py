@@ -3,6 +3,7 @@ import math
 import xbox
 import time
 import json
+from throttle import throttle
 
 # define joystick
 joy = xbox.Joystick()
@@ -33,6 +34,7 @@ class statusOut:
         for key, value in kwargs.items():
             self.status["vehicle_output"][key] = value
 
+    @throttle(1)
     def send(self):
         j = json.dumps(self.__dict__)
         print(j)
