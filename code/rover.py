@@ -104,6 +104,16 @@ if __name__ == '__main__':
         GPIO.output(GPIO_LED_RED, led_state_red)
         GPIO.output(GPIO_LED_YELLOW, led_state_yellow)
 
+        # grab inputs
+        input_right_trigger                     = joy.rightTrigger()
+        input_left_stick_x, input_left_stick_y  = joy.leftStick()
+        input_back                              = joy.Back()
+        input_start                             = joy.Start()
+        input_b                                 = joy.B()
+
+        # send current status
+        statusOut(armed = armed, input_right_trigger = input_right_trigger, input_left_stick_x  = input_left_stick_y).send()
+
         # check for armed status
         if armed == True:
 
@@ -112,7 +122,7 @@ if __name__ == '__main__':
             led_state_yellow    = GPIO.LOW
 
             # disarm if BACK is pressed
-            if joy.Back():
+            if input_back:
                 armed = False
                 time.sleep(0.1)
                 msgOut(message_arm).send()
@@ -124,10 +134,6 @@ if __name__ == '__main__':
             if not pwm_servo_init:
                 pwm_servo.start(5)
                 pwm_servo_init = True
-
-            # grab inputs
-            right_trigger               = joy.rightTrigger()
-            left_stick_x, left_stick_y  = joy.leftStick()
 
             # convert inputs into appropriate values
             throttle    = throttleFromTrigger(right_trigger)
@@ -158,16 +164,14 @@ if __name__ == '__main__':
             led_state_yellow    = GPIO.HIGH
 
             # arm if 'START' is pressed
-            if joy.Start():
+            if input_start:
                 armed = True
                 time.sleep(0.1)
                 msgOut(message_disarm).send()
 
             # stop running if 'B' is pressed
-            if joy.B():
+            if input_b:
                 running = False
-        
-        statusOut(armed = armed,right_trigger = right_trigger,left_stick_x = left_stick_x,left_stick_y = left_stick_y).send()
 
     msgOut('Closing joystick').send()
     joy.close()
