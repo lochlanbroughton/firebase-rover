@@ -31,34 +31,38 @@
             }
         }
     },
-    "realtime_user_input": {
+    "user_input": {
         "<userId>": {
             "armed": true,
             "a-button": true,
             "right_trigger": 100
         }
     },
-    "realtime_vehicle_output": {
+    "vehicle_output": {
         "<vehicleId>": {
             "armed": true,
             "right_trigger": 100
         }
     },
-    "realtime_user_states": {
+    "user_states": {
         "<userId>": {
             "online": true
         }
     },
-    "realtime_vehicle_states": {
+    "vehicle_states": {
         "<vehicleID>": {
             "online": true
         }
     },
     "session_logs": {
         "<sessionID>": {
-            "body": "",
-            "logged_at": "",
-            "sent_at": ""
+            "<messageId>": {
+                "body": "",
+                "received_at": "",
+                "logged_at": "",
+                "sent_at": "",
+                "created_at": ""
+            }
         }
     }
 }
