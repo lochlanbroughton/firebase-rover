@@ -41,7 +41,7 @@ rover.on('message', function(data) { // Message received (in JSON format)
 
     var dataType = data.type;
 
-    switch (data_type) {
+    switch (dataType) {
       case 'session_logs':
         database.ref(dataType + '/' + sessionKey).push(data[dataType]);
         break;
