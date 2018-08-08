@@ -136,8 +136,8 @@ if __name__ == '__main__':
                 pwm_servo_init = True
 
             # convert inputs into appropriate values
-            throttle    = throttleFromTrigger(right_trigger)
-            servo_angle = angleFromX(left_stick_x)
+            throttle    = throttleFromTrigger(input_right_trigger)
+            servo_angle = angleFromX(input_left_stick_x)
 
             # update green led
             updatePWM(pwm_led_green, throttle)
