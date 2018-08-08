@@ -24,7 +24,7 @@ class statusOut:
     def __init__(self,**kwargs):
         self.status = {
             "type": "vehicle_output",
-            "vehicle_output" {
+            "vehicle_output": {
             }
         }
         for key, value in kwargs.items():
