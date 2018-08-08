@@ -23,15 +23,16 @@ $ git clone https://github.com/lochlanbroughton/firebase-rover.git
 
 Replace `firebase-config-example.json` contents with own Firebase app config 
 ```bash
+$ cd code
 $ cp firebase-config-example.json firebase-config.json
 $ nano firebase-config.json
 ```
 
 ### Install dependencies
 
-Install Firebase
+Install Node.js dependencies
 ```bash
-$ npm i firebase
+$ npm install
 ```
 
 While developing we use an Xbox controller paired with the RPI to drive the vehicle. For more info check out: https://github.com/FRC4564/Xbox
