@@ -8,10 +8,27 @@ import json
 class msgOut:
     def __init__(self,message):
         self.msg = {
-            "type": "message",
-            "body": message,
-            "created_at": time.time()
+            "type": "session_log",
+            "session_log": {
+                "body": message,
+                "created_at": time.time()
+            }
+
         }
+
+    def send(self):
+        j = json.dumps(self.__dict__)
+        print(j)
+
+class statusOut:
+    def __init__(self,**kwargs):
+        self.status = {
+            "type": "vehicle_output",
+            "vehicle_output" {
+            }
+        }
+        for key, value in kwargs.items():
+            self.status.vehicle_output[key] = value
 
     def send(self):
         j = json.dumps(self.__dict__)
@@ -149,14 +166,8 @@ if __name__ == '__main__':
             # stop running if 'B' is pressed
             if joy.B():
                 running = False
-            
-        status = {
-            "type": "status",
-            "armed": armed,
-            "updated_at": time.time()
-        }
-        s = json.dumps(status)
-        print(s)
+
+         statusOut(armed = armed,right_trigger = right_trigger,left_stick_x = left_stick_x,left_stick_y = left_stick_y).send()
 
     msgOut('Closing joystick').send()
     joy.close()
