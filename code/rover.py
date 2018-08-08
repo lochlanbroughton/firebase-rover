@@ -166,8 +166,8 @@ if __name__ == '__main__':
             # stop running if 'B' is pressed
             if joy.B():
                 running = False
-
-         statusOut(armed = armed,right_trigger = right_trigger,left_stick_x = left_stick_x,left_stick_y = left_stick_y).send()
+        
+        statusOut(armed = armed,right_trigger = right_trigger,left_stick_x = left_stick_x,left_stick_y = left_stick_y).send()
 
     msgOut('Closing joystick').send()
     joy.close()
