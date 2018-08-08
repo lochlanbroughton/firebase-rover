@@ -39,8 +39,7 @@ var rover = new PythonShell('rover.py', {
 // Establish listeners
 rover.on('message', function(data) { // Message received (in JSON format)
 
-  var data     = JSON.parse(data);
-      dataType = data.type;
+  var dataType = data.type;
 
       console.log('Message received. Type: ' + dataType);
 

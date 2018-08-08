@@ -11,7 +11,7 @@ joy = xbox.Joystick()
 # send message to console
 class msgOut:
     def __init__(self,message):
-        self.msg = {
+        self.output = {
             "type": "session_logs",
             "session_logs": {
                 "body": message,
@@ -26,7 +26,7 @@ class msgOut:
 
 class statusOut:
     def __init__(self,**kwargs):
-        self.status = {
+        self.output = {
             "type": "vehicle_output",
             "vehicle_output": {
             }
