@@ -4,6 +4,9 @@ import xbox
 import time
 import json
 
+# define joystick
+joy = xbox.Joystick()
+
 # send message to console
 class msgOut:
     def __init__(self,message):
@@ -43,9 +46,6 @@ GPIO_SERVO_PIN  = 25    # front wheels steering
 # define strings
 message_arm     = "Press 'START' to arm or 'B' to end program"
 message_disarm  = "Press 'BACK' to disarm"
-
-# define joystick
-joy = xbox.Joystick()
 
 # set GPIO naming mode
 GPIO.setmode(GPIO.BCM)
