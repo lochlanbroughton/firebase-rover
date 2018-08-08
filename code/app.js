@@ -39,9 +39,11 @@ var rover = new PythonShell('rover.py', {
 // Establish listeners
 rover.on('message', function(data) { // Message received (in JSON format)
 
-  var dataType = data.type;
+  var dataType   = data.output.type,
+      dataOutput = data.output[dataType];
 
-      console.log('Message received. Type: ' + dataType);
+      console.log('Message received. dataType: ' + dataType);
+      console.log('Message received. dataOutput: ' + dataOutput);
 
       switch (dataType) {
         case 'session_logs':
