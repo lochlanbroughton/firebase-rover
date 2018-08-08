@@ -28,7 +28,7 @@ class statusOut:
             }
         }
         for key, value in kwargs.items():
-            self.status.vehicle_output[key] = value
+            self.status["vehicle_output"][key] = value
 
     def send(self):
         j = json.dumps(self.__dict__)
