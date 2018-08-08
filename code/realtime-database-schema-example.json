@@ -1,0 +1,64 @@
+{
+    "users": {
+        "<userID>": {
+            "vehicles": {
+                "<vehivcleID>": true
+            },
+            "sessions": {
+                "<sessionID>": true
+            }
+        }
+    },
+    "vehicles": {
+        "<vehicleID>": {
+            "users": {
+                "<userID": true
+            },
+            "sessions": {
+                "<sessionID>": true
+            }
+        }
+    },
+    "sessions": {
+        "<sessionID>": {
+            "stated_at": 123456789,
+            "most_recent_log_entry": "",
+            "vehicles": {
+                "<vehivcleID>": true
+            },
+            "users": {
+                "<userID": true
+            }
+        }
+    },
+    "realtime_user_input": {
+        "<userId>": {
+            "armed": true,
+            "a-button": true,
+            "right_trigger": 100
+        }
+    },
+    "realtime_vehicle_output": {
+        "<vehicleId>": {
+            "armed": true,
+            "right_trigger": 100
+        }
+    },
+    "realtime_user_states": {
+        "<userId>": {
+            "online": true
+        }
+    },
+    "realtime_vehicle_states": {
+        "<vehicleID>": {
+            "online": true
+        }
+    },
+    "session_logs": {
+        "<sessionID>": {
+            "body": "",
+            "logged_at": "",
+            "sent_at": ""
+        }
+    }
+}
