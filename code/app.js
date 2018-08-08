@@ -39,16 +39,19 @@ var rover = new PythonShell('rover.py', {
 // Establish listeners
 rover.on('message', function(data) { // Message received (in JSON format)
 
-    var dataType = data.type;
+  var data     = JSON.parse(data);
+      dataType = data.type;
 
-    switch (dataType) {
-      case 'session_logs':
-        database.ref(dataType + '/' + sessionKey).push(data[dataType]);
-        break;
-      case 'vehicle_output':
-        database.ref(dataType + '/' + vehicleKey).push(data[dataType]);
-        break;
-    }
+      console.log('Message received. Type: ' + dataType);
+
+      switch (dataType) {
+        case 'session_logs':
+          database.ref(dataType + '/' + sessionKey).push(data[dataType]);
+          break;
+        case 'vehicle_output':
+          database.ref(dataType + '/' + vehicleKey).push(data[dataType]);
+          break;
+      }
 
 }).on('close', function (result) { // Script ends
 
