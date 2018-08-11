@@ -32,7 +32,7 @@ class statusOut:
             }
         }
         for key, value in kwargs.items():
-            self.status["vehicle_output"][key] = value
+            self.output["vehicle_output"][key] = value
 
     @throttle(1)
     def send(self):
