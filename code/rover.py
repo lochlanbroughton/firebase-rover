@@ -32,7 +32,7 @@ class statusOut:
             }
         }
         for key, value in kwargs.items():
-            self.status["vehicle_output"][key] = value
+            self.output["vehicle_output"][key] = value
 
     @throttle(1)
     def send(self):
@@ -81,8 +81,7 @@ def angleFromX(x):
         angle = 90.0 * (-1.0 * x) + 90.0    # left turn
     return angle
 
-if __name__ == '__main__':
-
+def run():
     # define initial values
     running = True
     armed   = False
@@ -175,6 +174,9 @@ if __name__ == '__main__':
             if input_b:
                 running = False
 
+try:
+    run()
+finally:
     msgOut('Closing joystick').send()
     joy.close()
     msgOut('Cleaning up GPIO').send()
