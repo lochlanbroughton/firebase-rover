@@ -20,7 +20,7 @@ firebase.initializeApp(firebaseConfig);
 const database        = firebase.database(),
       vehicleKey      = 'mk1',
       sessionKey      = database.ref('sessions').push().key;
-      userKey         = false
+      userKey         = "test-user"
 
 database.ref('sessions/' + sessionKey + '/vehicles').set({[vehicleKey]: true});
 database.ref('sessions/' + sessionKey + '/users').set({[userKey]: true});
@@ -50,7 +50,7 @@ rover.on('message', function(data) { // Message received (in JSON format)
           database.ref(dataType + '/' + sessionKey).push(dataOutput);
           break;
         case 'vehicle_output':
-          database.ref(dataType + '/' + vehicleKey).push(dataOutput);
+          database.ref(dataType + '/' + vehicleKey).set(dataOutput);
           break;
       }
 
