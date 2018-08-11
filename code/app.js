@@ -40,17 +40,17 @@ var rover = new PythonShell('rover.py', {
 rover.on('message', function(data) { // Message received (in JSON format)
 
   var dataType   = data.output.type,
-      dataOutput = JSON.parse(data.output[dataType]);
+      dataOutput = data.output[dataType];
 
       console.log('Message received. dataType: ' + dataType);
       console.log('Message received. dataOutput: ' + dataOutput);
 
       switch (dataType) {
         case 'session_logs':
-          database.ref(dataType + '/' + sessionKey).push(data[dataType]);
+          database.ref(dataType + '/' + sessionKey).push(dataOutput);
           break;
         case 'vehicle_output':
-          database.ref(dataType + '/' + vehicleKey).push(data[dataType]);
+          database.ref(dataType + '/' + vehicleKey).push(dataOutput);
           break;
       }
 
